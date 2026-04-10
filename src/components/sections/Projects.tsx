@@ -32,72 +32,74 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <div className="relative flex flex-col justify-center container mx-auto px-4 md:px-12 lg:px-24">
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-12"
-      >
-        <h2 className="text-[28px] md:text-[32px] font-semibold text-foreground mb-4 tracking-tight">Technical Endeavors</h2>
-        <div className="w-12 h-[2px] bg-brand-primary"></div>
-      </motion.div>
+    <div className="relative flex flex-col items-center justify-center container mx-auto px-6 md:px-10 lg:px-16 w-full -mt-7">
+      <div className="w-full max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center lg:text-left"
+        >
+          <div className="inline-block px-3 py-1 bg-brand-primary/5 border border-brand-primary/10 rounded-full mb-6">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Curated Gallery</span>
+          </div>
+          <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-4 tracking-tight">Technical Endeavors.</h2>
+          <div className="w-12 h-[1.5px] bg-brand-primary mx-auto lg:mx-0"></div>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="card-base hover:card-hover flex flex-col h-full p-8 relative overflow-hidden"
-          >
-            {/* Fine Accent Line */}
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-brand-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div className="flex flex-col h-full relative z-10">
-              <div className="flex justify-between items-start mb-10">
-                <div className="w-11 h-11 flex items-center justify-center bg-brand-primary/5 rounded-xl border border-brand-primary/10 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all duration-300">
-                  <FaGithub className="w-5 h-5 text-brand-primary group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex gap-2">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="card-base hover:card-hover flex flex-col h-full p-8 relative overflow-hidden group"
+            >
+              {/* Fine Accent Line */}
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-brand-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              <div className="flex flex-col h-full relative z-10">
+                <div className="flex justify-between items-start mb-8">
+                  <div className="w-10 h-10 flex items-center justify-center bg-brand-primary/5 rounded-lg border border-brand-primary/10 group-hover:bg-brand-primary group-hover:border-brand-primary transition-all duration-300">
+                    <FaGithub className="w-4 h-4 text-brand-primary group-hover:text-white transition-colors" />
+                  </div>
+                  <a
+                    href={project.github}
+                    target="_blank"
                     rel="noreferrer"
                     className="p-2 text-brand-muted hover:text-brand-primary transition-colors"
                   >
-                    <ExternalLink className="w-5 h-5" />
+                    <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
-              </div>
 
-              <div className="mb-6">
-                <h3 className="text-[19px] md:text-[21px] font-bold text-foreground mb-2 tracking-tight group-hover:text-brand-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-brand-muted text-[10px] font-bold uppercase tracking-[0.2em]">
-                  {project.subtitle}
+                <div className="mb-5">
+                  <h3 className="text-[18px] md:text-[20px] font-bold text-foreground mb-1 tracking-tight group-hover:text-brand-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-brand-muted text-[10px] font-bold uppercase tracking-[0.2em]">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                <p className="text-brand-accent mb-8 flex-grow text-[13px] md:text-[14px] leading-relaxed font-normal">
+                  {project.description}
                 </p>
+
+                <div className="flex flex-wrap gap-2 pt-5 border-t border-brand-border/50">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-2 py-1 bg-brand-primary/5 text-[9px] font-bold uppercase tracking-widest text-brand-primary rounded-md transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <p className="text-brand-accent mb-10 flex-grow text-[14px] md:text-[15px] leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-x-4 gap-y-2 pt-6 border-t border-brand-border">
-                {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-brand-muted group-hover:text-brand-primary transition-colors">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

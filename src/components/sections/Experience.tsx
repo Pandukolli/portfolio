@@ -50,11 +50,11 @@ export function ExperienceSection() {
   const pathHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-    <div ref={containerRef} className="relative flex items-center justify-center container mx-auto px-4 md:px-12 lg:px-24">
-      <div className="w-full flex flex-col lg:flex-row gap-16 items-start">
+    <div ref={containerRef} className="relative flex items-center justify-center container mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 items-start max-w-7xl">
         
-        {/* Experience Timeline */}
-        <div className="flex-1">
+        {/* Left Side: Experience Timeline */}
+        <div className="flex-[1.2]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,8 +62,11 @@ export function ExperienceSection() {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <h2 className="text-[28px] md:text-[32px] font-semibold text-foreground mb-4 tracking-tight">Professional Trajectory</h2>
-            <div className="w-12 h-[2px] bg-brand-primary"></div>
+            <div className="inline-block px-3 py-1 bg-brand-primary/5 border border-brand-primary/10 rounded-full mb-6">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Career Trajectory</span>
+            </div>
+            <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-4 tracking-tight">Professional History.</h2>
+            <div className="w-12 h-[1.5px] bg-brand-primary"></div>
           </motion.div>
 
           <div className="relative ml-2">
@@ -81,20 +84,22 @@ export function ExperienceSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative pl-10 md:pl-16 group"
+                  className="relative pl-10 md:pl-12 group"
                 >
-                  <div className="absolute w-2.5 h-2.5 bg-brand-primary rounded-full -left-[4.5px] top-1.5 z-20 border-4 border-background" />
+                  <div className="absolute w-2 h-2 bg-brand-primary rounded-full -left-[3.5px] top-2 z-20 border-2 border-background" />
                   
                   <div className="flex flex-col mb-4">
-                    <span className="text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase mb-2">{exp.date}</span>
-                    <h3 className="text-[18px] md:text-[22px] font-semibold text-foreground tracking-tight transition-colors group-hover:text-brand-primary">{exp.title}</h3>
-                    <h4 className="text-brand-accent text-[12px] font-bold uppercase tracking-wide mt-1">{exp.company}</h4>
+                    <span className="text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase mb-1">{exp.date}</span>
+                    <h3 className="text-[20px] md:text-[24px] font-bold text-foreground tracking-tight transition-colors group-hover:text-brand-primary">
+                      {exp.title}
+                    </h3>
+                    <h4 className="text-brand-accent text-[12px] font-bold uppercase tracking-widest mt-1 opacity-70 italic">{exp.company}</h4>
                   </div>
                   
-                  <ul className="space-y-3 max-w-2xl">
+                  <ul className="space-y-4 max-w-2xl">
                     {exp.points.map((point, i) => (
-                      <li key={i} className="flex gap-4 text-brand-accent text-[14px] md:text-[15px] leading-relaxed">
-                        <span className="mt-2.5 w-1 h-1 rounded-full bg-brand-primary/40 shrink-0" />
+                      <li key={i} className="flex gap-4 text-brand-accent text-[14px] md:text-[16px] leading-relaxed font-normal">
+                        <span className="mt-2.5 w-1 h-1 rounded-full bg-brand-primary/30 shrink-0" />
                         {point}
                       </li>
                     ))}
@@ -105,16 +110,17 @@ export function ExperienceSection() {
           </div>
         </div>
 
-        {/* Certifications Sidebar */}
-        <div className="lg:w-[360px] w-full pt-12 lg:pt-0">
+        {/* Right Side: Accreditations Sidebar */}
+        <div className="lg:w-[380px] w-full pt-12 lg:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
+            className="mb-10"
           >
-            <h2 className="text-[22px] md:text-[26px] font-semibold text-foreground">Accreditations</h2>
+            <h3 className="text-[13px] font-bold text-brand-muted uppercase tracking-[0.3em] mb-4">Accreditations</h3>
+            <div className="w-8 h-[1.5px] bg-brand-primary"></div>
           </motion.div>
 
           <div className="flex flex-col gap-4">
@@ -125,15 +131,20 @@ export function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 card-base hover:card-hover flex flex-col gap-2"
+                className="p-6 card-base hover:card-hover flex flex-col gap-3 group"
               >
                 <div className="flex items-start justify-between">
-                  <h3 className="text-[16px] md:text-[17px] font-semibold text-foreground leading-tight">{cert.title}</h3>
-                  <Award className="w-5 h-5 text-brand-primary shrink-0 ml-4" />
+                  <div>
+                    <h4 className="text-[17px] font-bold text-foreground leading-tight mb-1">{cert.title}</h4>
+                    <p className="text-[11px] font-bold text-brand-primary uppercase tracking-wider">{cert.issuer}</p>
+                  </div>
+                  <div className="p-2 bg-brand-primary/5 rounded-lg group-hover:bg-brand-primary group-hover:text-white transition-all">
+                    <Award className="w-4 h-4 text-brand-primary group-hover:text-white" />
+                  </div>
                 </div>
-                <div className="flex items-center justify-between mt-4 pb-1">
-                  <p className="text-brand-muted text-[10px] font-bold tracking-widest uppercase">{cert.issuer}</p>
-                  <span className="text-brand-primary text-[10px] font-bold bg-brand-primary/5 px-2.5 py-1 rounded-md">{cert.date}</span>
+                <div className="flex items-center justify-between pt-4 border-t border-brand-border/50">
+                  <span className="text-brand-muted text-[10px] font-bold tracking-widest uppercase">Verified</span>
+                  <span className="text-brand-muted text-[10px] font-bold">{cert.date}</span>
                 </div>
               </motion.div>
             ))}

@@ -38,46 +38,66 @@ const skillsData = [
 
 export function SkillsSection() {
   return (
-    <div className="relative flex items-center justify-center container mx-auto px-4 md:px-12 lg:px-24 py-16">
-      <div className="w-full flex flex-col items-center">
+    <div className="relative flex items-center justify-center container mx-auto px-6 md:px-10 lg:px-16 w-full">
+      <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 items-start max-w-7xl">
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full text-left lg:text-center mb-16"
-        >
-          <h2 className="text-[28px] md:text-[32px] font-semibold text-foreground mb-4 tracking-tight">Technical Arsenal</h2>
-          <div className="w-12 h-[2px] bg-brand-primary lg:mx-auto"></div>
-        </motion.div>
+        {/* Left Side: Technical Narrative (40% Weight) */}
+        <div className="flex-1 lg:max-w-md">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-10"
+          >
+            <div className="inline-block px-3 py-1 bg-brand-primary/5 border border-brand-primary/10 rounded-full mb-6">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Technical Strategy</span>
+            </div>
+            <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-6 tracking-tight leading-tight">
+              Foundational <br />
+              <span className="text-brand-primary">Expertise.</span>
+            </h2>
+            <div className="w-12 h-[1.5px] bg-brand-primary"></div>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-[15px] md:text-[17px] text-brand-accent leading-relaxed font-normal"
+          >
+            My technical stack is built on a foundation of rigorous engineering principles and modern web standards. I prioritize tools that offer both high performance and exceptional developer experience to build resilient digital systems.
+          </motion.p>
+        </div>
+
+        {/* Right Side: Competency Grid (60% Weight) */}
+        <div className="flex-[1.5] w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
           {skillsData.map((data, index) => {
             const IconComponent = data.icon;
             return (
               <motion.div
                 key={data.category}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-base hover:card-hover p-8 md:p-10"
+                className="card-base hover:card-hover p-6 md:p-8"
               >
-                <div className="flex items-center gap-5 mb-10">
-                  <div className="p-3 bg-brand-primary/5 rounded-xl">
-                    <IconComponent className="w-6 h-6 text-brand-primary" />
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-2.5 bg-brand-primary/5 rounded-xl">
+                    <IconComponent className="w-5 h-5 text-brand-primary" />
                   </div>
-                  <h3 className="text-[18px] md:text-[20px] font-semibold text-foreground tracking-tight">
+                  <h3 className="text-[16px] md:text-[18px] font-bold text-foreground tracking-tight leading-none">
                     {data.category}
                   </h3>
                 </div>
                 
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {data.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3.5 py-1.5 bg-brand-primary/5 border border-brand-primary/10 rounded-lg text-brand-primary font-bold text-[10px] tracking-wide uppercase transition-all"
+                      className="px-3 py-1 bg-white border border-brand-border rounded-[8px] text-brand-accent font-semibold text-[11px] tracking-wide transition-all hover:border-brand-primary hover:text-brand-primary cursor-default"
                     >
                       {skill}
                     </span>

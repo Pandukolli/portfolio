@@ -47,7 +47,7 @@ export function ConnectSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-3 py-1 bg-brand-primary/5 border border-brand-primary/10 rounded-full mb-6">
+          <div className="inline-block px-3 py-1 bg-brand-primary/5 border border-brand-primary/10 rounded-full mb-6 mt-7">
             <span className="text-[10px] font-bold uppercase tracking-widest text-brand-primary">Direct Contact</span>
           </div>
           <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-4 tracking-tighter">Let's start a conversation</h2>

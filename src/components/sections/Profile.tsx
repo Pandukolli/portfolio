@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export function ProfileSection() {
   return (
-    <div className="flex items-center justify-center relative px-6 md:px-10 lg:px-16 w-full">
+    <div className="flex items-center justify-center relative px-6 md:px-10 lg:px-16 w-full -mt-17">
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-screen-xl gap-16 lg:gap-24">
 
         {/* Left Side: Solid Typography Block (60% Weight) */}

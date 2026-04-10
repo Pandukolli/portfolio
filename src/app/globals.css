@@ -32,6 +32,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+section {
+  scroll-margin-top: 10vh;
+}
+
 /* ===== Spacing & Layout Utilities ===== */
 @utility section-padding {
   padding-top: 4rem;
