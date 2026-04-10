@@ -38,18 +38,18 @@ const skillsData = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="min-h-screen py-24 flex items-center justify-center relative px-4 md:px-12 lg:px-24 container mx-auto">
-      <div className="w-full flex flex-col items-start xl:items-center">
+    <div className="relative flex items-center justify-center container mx-auto px-4 md:px-12 lg:px-24 py-16">
+      <div className="w-full flex flex-col items-center">
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full text-left xl:text-center mb-16"
+          className="w-full text-left lg:text-center mb-16"
         >
           <h2 className="text-[28px] md:text-[32px] font-semibold text-foreground mb-4 tracking-tight">Technical Arsenal</h2>
-          <div className="w-12 h-[2px] bg-brand-primary xl:mx-auto"></div>
+          <div className="w-12 h-[2px] bg-brand-primary lg:mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
@@ -62,22 +62,22 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-brand-secondary/30 border border-foreground/5 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300"
+                className="card-base hover:card-hover p-8 md:p-10"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="p-2.5 bg-white rounded-xl shadow-sm border border-foreground/5 group-hover:border-brand-primary/20 transition-colors">
-                    <IconComponent className="w-5 h-5 text-brand-primary" />
+                <div className="flex items-center gap-5 mb-10">
+                  <div className="p-3 bg-brand-primary/5 rounded-xl">
+                    <IconComponent className="w-6 h-6 text-brand-primary" />
                   </div>
-                  <h3 className="text-[18px] md:text-[20px] font-medium text-foreground tracking-tight">
+                  <h3 className="text-[18px] md:text-[20px] font-semibold text-foreground tracking-tight">
                     {data.category}
                   </h3>
                 </div>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {data.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 bg-white border border-foreground/5 rounded-lg text-brand-accent font-semibold text-[11px] tracking-wide uppercase transition-all group-hover:border-brand-primary/10"
+                      className="px-3.5 py-1.5 bg-brand-primary/5 border border-brand-primary/10 rounded-lg text-brand-primary font-bold text-[10px] tracking-wide uppercase transition-all"
                     >
                       {skill}
                     </span>
@@ -88,6 +88,6 @@ export function SkillsSection() {
           })}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

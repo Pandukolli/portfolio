@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FBFCFE;
-  --foreground: #0F172A;
-  --color-primary: #C9A227;
-  --color-secondary: #F8F9FB;
-  --color-accent: #334155;
-  --color-muted: #94A3B8;
-  --color-surface-dark: #FFFFFF;
+  --background: #FAF7F5;
+  --foreground: #1C1C1C;
+  --color-primary: #7A1E2C;
+  --color-secondary: #FFFFFF;
+  --color-accent: #666666;
+  --color-muted: #9A9A9A;
+  --color-border: #E9E2DF;
 }
 
 @theme inline {
@@ -17,7 +17,7 @@
   --color-brand-secondary: var(--color-secondary);
   --color-brand-accent: var(--color-accent);
   --color-brand-muted: var(--color-muted);
-  --color-surface: var(--color-surface-dark);
+  --color-brand-border: var(--color-border);
   
   --font-sans: var(--font-inter);
 }
@@ -32,25 +32,54 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ===== Glassmorphism ===== */
-@utility glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+/* ===== Spacing & Layout Utilities ===== */
+@utility section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  @apply md:py-24;
 }
 
-@utility glass-hover {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px);
+/* ===== Professional Elevation System ===== */
+@utility card-base {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== Gradients ===== */
-@utility text-gradient-brand {
-  background: linear-gradient(135deg, #1A1A1A, #4A4A4A);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@utility card-hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-color: rgba(122, 30, 44, 0.1);
+}
+
+/* ===== Premium Button System ===== */
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+@utility btn-primary-hover {
+  background-color: #641824;
+  transform: scale(1.02);
+}
+
+@utility btn-primary-active {
+  background-color: #56151D;
+  transform: scale(0.98);
+}
+
+/* ===== Soft Atmospheric Blobs ===== */
+@utility ambient-blob {
+  filter: blur(120px);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
 }
